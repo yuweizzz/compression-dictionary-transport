@@ -1,0 +1,9 @@
+[submodule "brotli_dictionary_generator/brotli"]
+	path = brotli_dictionary_generator/brotli
+	url = https://github.com/google/brotli.git
+[submodule "brotli_dictionary_generator/esaxx"]
+	path = brotli_dictionary_generator/esaxx
+	url = https://github.com/hillbig/esaxx.git
+[submodule "brotli_dictionary_generator/libdivsufsort"]
+	path = brotli_dictionary_generator/libdivsufsort
+	url = https://github.com/y-256/libdivsufsort.git
