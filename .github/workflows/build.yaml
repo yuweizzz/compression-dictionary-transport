@@ -24,6 +24,7 @@ jobs:
 
       - name: Build brotli_dictionary_generator
         run: |
+          git submodule init
           git submodule update
           cd brotli_dictionary_generator
           bash -x build.sh
