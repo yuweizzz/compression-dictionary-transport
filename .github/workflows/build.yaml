@@ -1,0 +1,37 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Build tools
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.24
+
+      - name: Build zstd_dictionary_converter
+        run: |
+          cd zstd_dictionary_converter/cmd
+          go build -o zstd_dictionary_converter
+
+      - name: Build brotli_dictionary_generator
+        run: |
+          git submodule update
+          cd brotli_dictionary_generator
+          bash -x build.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: |
+            zstd_dictionary_converter/cmd/zstd_dictionary_converter
+            brotli_dictionary_generator/brotli_dictionary_generator
